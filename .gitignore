@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+
+# Build output (published to gh-pages branch via npm run deploy)
+dist/
+
+# macOS
+.DS_Store
+
+# Obsidian (this folder is also an Obsidian vault)
+.obsidian/
+Untitled*.canvas
+Untitled*.base
+2026-*.md
+
+# Local Claude Code settings
+.claude/settings.local.json

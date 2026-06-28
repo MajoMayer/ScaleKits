@@ -1,0 +1,322 @@
+/* ── Reset & Base ─────────────────────────────────────────────────────────── */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #ffffff;
+  color: #1a1a1a;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+/* ── Navigation ───────────────────────────────────────────────────────────── */
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #ffffff;
+  border-bottom: 2px solid #4A7FA5;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  flex-wrap: wrap;
+}
+
+.nav-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #4A7FA5;
+  white-space: nowrap;
+  margin-right: auto;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #4A7FA5;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 0.2rem 0;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.15s;
+}
+
+.nav-links a:hover {
+  border-bottom-color: #4A7FA5;
+}
+
+/* ── Main content ─────────────────────────────────────────────────────────── */
+
+.main {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+/* ── Category section ─────────────────────────────────────────────────────── */
+
+.category {
+  margin-bottom: 3.5rem;
+}
+
+.category-heading {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #4A7FA5;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid #d0e4f0;
+}
+
+.category-count {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #999;
+}
+
+.nav-count {
+  font-size: 0.8em;
+  opacity: 0.65;
+}
+
+.empty {
+  color: #888;
+  font-style: italic;
+}
+
+/* ── Responsive grid ──────────────────────────────────────────────────────── */
+
+.grid {
+  display: grid;
+  gap: 1.25rem;
+  /* 4 columns at 1280px+ */
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* 3 columns at 900–1279px */
+@media (max-width: 1279px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* 2 columns at 600–899px */
+@media (max-width: 899px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 1 column at 320–599px */
+@media (max-width: 599px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Kit card ─────────────────────────────────────────────────────────────── */
+
+.card {
+  background: #ffffff;
+  border: 1px solid #d8e8f2;
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #f0f6fb;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.card-body {
+  padding: 0.65rem 0.75rem 0.75rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.card-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #4A7FA5;
+  line-height: 1.3;
+}
+
+.card-meta {
+  font-size: 0.82rem;
+  color: #666;
+}
+
+.card {
+  cursor: pointer;
+}
+
+.card:hover .card-image img {
+  opacity: 0.9;
+}
+
+/* ── Lightbox ─────────────────────────────────────────────────────────────── */
+
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.92);
+  flex-direction: column;
+}
+
+.lightbox.is-open {
+  display: flex;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 1.25rem;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 2.5rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  opacity: 0.8;
+  z-index: 10;
+}
+
+.lightbox-close:hover {
+  opacity: 1;
+}
+
+/* Main area: photo + arrows */
+.lightbox-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.lightbox-img {
+  max-width: calc(100vw - 8rem);
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+  border-radius: 3px;
+}
+
+.lightbox-prev,
+.lightbox-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+  opacity: 0.8;
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.lightbox-prev { left: 0.75rem; }
+.lightbox-next { right: 0.75rem; }
+
+.lightbox-prev.is-hidden,
+.lightbox-next.is-hidden {
+  display: none;
+}
+
+/* Footer: counter + thumbnail strip */
+.lightbox-footer {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem 0.75rem;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.lightbox-counter {
+  color: #fff;
+  font-size: 0.85rem;
+  opacity: 0.7;
+  white-space: nowrap;
+}
+
+/* Thumbnail strip */
+.lightbox-thumbs {
+  display: flex;
+  gap: 0.4rem;
+  overflow-x: auto;
+  max-width: 100vw;
+  padding-bottom: 2px;
+}
+
+.lightbox-thumbs:empty {
+  display: none;
+}
+
+.lightbox-thumb {
+  flex-shrink: 0;
+  width: 56px;
+  height: 42px;
+  object-fit: cover;
+  border-radius: 3px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  opacity: 0.6;
+  transition: opacity 0.1s, border-color 0.1s;
+}
+
+.lightbox-thumb:hover {
+  opacity: 0.9;
+}
+
+.lightbox-thumb.is-active {
+  border-color: #4A7FA5;
+  opacity: 1;
+}

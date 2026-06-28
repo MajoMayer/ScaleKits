@@ -1,0 +1,17 @@
+{
+  "name": "mm-kits",
+  "version": "1.0.0",
+  "description": "MM Kits — scale model kit showcase",
+  "scripts": {
+    "build": "eleventy",
+    "serve": "eleventy --serve",
+    "import": "node scripts/import.js",
+    "deploy": "npm run build && gh-pages -d dist --nojekyll"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "^2.0.1"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
+  }
+}

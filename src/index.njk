@@ -1,0 +1,189 @@
+---
+title: MM Kits
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ title }}</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  {% set c_progress    = kits | categoryCount("progress") %}
+  {% set c_finished    = kits | categoryCount("finished") %}
+  {% set c_mid         = kits | categoryCount("mid") %}
+  {% set c_early       = kits | categoryCount("early") %}
+  {% set c_stash       = kits | categoryCount("stash") %}
+  {% set c_figures     = kits | categoryCount("figures") %}
+  {% set c_stashnomore = kits | categoryCount("stashnomore") %}
+
+  <nav class="nav">
+    <span class="nav-title">MM Kits</span>
+    <ul class="nav-links">
+      <li><a href="#progress">Kits in Progress <span class="nav-count">({{ c_progress }})</span></a></li>
+      <li><a href="#finished">Finished Kits <span class="nav-count">({{ c_finished }})</span></a></li>
+      <li><a href="#mid">Mid Age Kits <span class="nav-count">({{ c_mid }})</span></a></li>
+      <li><a href="#early">Early Age Kits <span class="nav-count">({{ c_early }})</span></a></li>
+      <li><a href="#stash">Stash <span class="nav-count">({{ c_stash }})</span></a></li>
+      <li><a href="#figures">Figures &amp; Material <span class="nav-count">({{ c_figures }})</span></a></li>
+      <li><a href="#stashnomore">Stash No More <span class="nav-count">({{ c_stashnomore }})</span></a></li>
+    </ul>
+  </nav>
+
+  <main class="main">
+
+    <section class="category" id="progress">
+      <h2 class="category-heading">Kits in Progress <span class="category-count">({{ c_progress }})</span></h2>
+      <div class="grid">
+        {% for kit in kits %}
+          {% if kit.category == "progress" %}
+            <div class="card" data-photos="{{ kit.photos | dump | escape }}">
+              <div class="card-image">
+                <img src="{{ kit.boxArt }}" alt="Box art for {{ kit.name }}" loading="lazy" />
+              </div>
+              <div class="card-body">
+                <p class="card-name">{{ kit.name }}</p>
+                <p class="card-meta">{{ kit.manufacturer }} &middot; {{ kit.scale }}</p>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </section>
+
+    <section class="category" id="finished">
+      <h2 class="category-heading">Finished Kits <span class="category-count">({{ c_finished }})</span></h2>
+      <div class="grid">
+        {% for kit in kits %}
+          {% if kit.category == "finished" %}
+            <div class="card" data-photos="{{ kit.photos | dump | escape }}">
+              <div class="card-image">
+                <img src="{{ kit.boxArt }}" alt="Box art for {{ kit.name }}" loading="lazy" />
+              </div>
+              <div class="card-body">
+                <p class="card-name">{{ kit.name }}</p>
+                <p class="card-meta">{{ kit.manufacturer }} &middot; {{ kit.scale }}</p>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </section>
+
+    <section class="category" id="mid">
+      <h2 class="category-heading">Mid Age Kits <span class="category-count">({{ c_mid }})</span></h2>
+      <div class="grid">
+        {% for kit in kits %}
+          {% if kit.category == "mid" %}
+            <div class="card" data-photos="{{ kit.photos | dump | escape }}">
+              <div class="card-image">
+                <img src="{{ kit.boxArt }}" alt="Box art for {{ kit.name }}" loading="lazy" />
+              </div>
+              <div class="card-body">
+                <p class="card-name">{{ kit.name }}</p>
+                <p class="card-meta">{{ kit.manufacturer }} &middot; {{ kit.scale }}</p>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </section>
+
+    <section class="category" id="early">
+      <h2 class="category-heading">Early Age Kits <span class="category-count">({{ c_early }})</span></h2>
+      <div class="grid">
+        {% for kit in kits %}
+          {% if kit.category == "early" %}
+            <div class="card" data-photos="{{ kit.photos | dump | escape }}">
+              <div class="card-image">
+                <img src="{{ kit.boxArt }}" alt="Box art for {{ kit.name }}" loading="lazy" />
+              </div>
+              <div class="card-body">
+                <p class="card-name">{{ kit.name }}</p>
+                <p class="card-meta">{{ kit.manufacturer }} &middot; {{ kit.scale }}</p>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </section>
+
+    <section class="category" id="stash">
+      <h2 class="category-heading">Stash <span class="category-count">({{ c_stash }})</span></h2>
+      <div class="grid">
+        {% for kit in kits %}
+          {% if kit.category == "stash" %}
+            <div class="card" data-photos="{{ kit.photos | dump | escape }}">
+              <div class="card-image">
+                <img src="{{ kit.boxArt }}" alt="Box art for {{ kit.name }}" loading="lazy" />
+              </div>
+              <div class="card-body">
+                <p class="card-name">{{ kit.name }}</p>
+                <p class="card-meta">{{ kit.manufacturer }} &middot; {{ kit.scale }}</p>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </section>
+
+    <section class="category" id="figures">
+      <h2 class="category-heading">Figures &amp; Material <span class="category-count">({{ c_figures }})</span></h2>
+      <div class="grid">
+        {% for kit in kits %}
+          {% if kit.category == "figures" %}
+            <div class="card" data-photos="{{ kit.photos | dump | escape }}">
+              <div class="card-image">
+                <img src="{{ kit.boxArt }}" alt="Box art for {{ kit.name }}" loading="lazy" />
+              </div>
+              <div class="card-body">
+                <p class="card-name">{{ kit.name }}</p>
+                <p class="card-meta">{{ kit.manufacturer }} &middot; {{ kit.scale }}</p>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </section>
+
+    <section class="category" id="stashnomore">
+      <h2 class="category-heading">Stash No More <span class="category-count">({{ c_stashnomore }})</span></h2>
+      <div class="grid">
+        {% for kit in kits %}
+          {% if kit.category == "stashnomore" %}
+            <div class="card" data-photos="{{ kit.photos | dump | escape }}">
+              <div class="card-image">
+                <img src="{{ kit.boxArt }}" alt="Box art for {{ kit.name }}" loading="lazy" />
+              </div>
+              <div class="card-body">
+                <p class="card-name">{{ kit.name }}</p>
+                <p class="card-meta">{{ kit.manufacturer }} &middot; {{ kit.scale }}</p>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Lightbox overlay -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Kit photos">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close">&times;</button>
+    <div class="lightbox-main">
+      <button class="lightbox-prev" id="lightbox-prev" aria-label="Previous photo">&#8592;</button>
+      <img class="lightbox-img" id="lightbox-img" src="" alt="" />
+      <button class="lightbox-next" id="lightbox-next" aria-label="Next photo">&#8594;</button>
+    </div>
+    <div class="lightbox-footer">
+      <div class="lightbox-counter" id="lightbox-counter"></div>
+      <div class="lightbox-thumbs" id="lightbox-thumbs"></div>
+    </div>
+  </div>
+
+  <script src="js/lightbox.js"></script>
+
+</body>
+</html>
